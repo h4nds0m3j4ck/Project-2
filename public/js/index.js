@@ -1,99 +1,103 @@
 // Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
+var $ownerAddress = $("#owner-Address");
+var $ownerName = $("#owner-Name");
+var $ownerPrice = $('#owner-Price');
+var $ownerAvailability = $('#owner-Availability');
 var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
+var $ownerList = $("#owner-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveExample: function(example) {
+  saveOwner: function(owner) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
+      url: "api/owners",
+      data: JSON.stringify(owner)
     });
   },
-  getExamples: function() {
+  getOwners: function() {
     return $.ajax({
-      url: "api/examples",
+      url: "api/owners",
       type: "GET"
     });
   },
-  deleteExample: function(id) {
+  deleteOwner: function(id) {
     return $.ajax({
-      url: "api/examples/" + id,
+      url: "api/owners/" + id,
       type: "DELETE"
     });
   }
 };
 
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
+// refreshOwners gets new owners from the db and repopulates the list
+var refreshOwners = function() {
+  API.getOwners().then(function(data) {
+    var $owners = data.map(function(owner) {
       var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
+        .Address(owner.Address)
+        .attr("href", "/owner/" + owner.id);
 
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
-          "data-id": example.id
+          "data-id": owner.id
         })
         .append($a);
 
       var $button = $("<button>")
         .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
+        .Address("ｘ");
 
       $li.append($button);
 
       return $li;
     });
 
-    $exampleList.empty();
-    $exampleList.append($examples);
+    $ownerList.empty();
+    $ownerList.append($owners);
   });
 };
 
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
+// handleFormSubmit is called whenever we submit a new owner
+// Save the new owner to the db and refresh the list
 var handleFormSubmit = function(event) {
   event.preventDefault();
 
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+  var owner = {
+    Address: $ownerAddress.val().trim(),
+    Name: $ownerName.val().trim(),
+    Price: $ownerPrice.val().trim()
   };
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
+  if (!(owner.Address && owner.Name && owner.Price)) {
+    alert("You must enter an owner Address and Name!");
     return;
   }
 
-  API.saveExample(example).then(function() {
-    refreshExamples();
+  API.saveOwner(owner).then(function() {
+    refreshOwners();
   });
 
-  $exampleText.val("");
-  $exampleDescription.val("");
+  $ownerAddress.val("");
+  $ownerName.val("");
+  $ownerPrice.val("");
 };
 
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
+// handleDeleteBtnClick is called when an owner's delete button is clicked
+// Remove the owner from the db and refresh the list
 var handleDeleteBtnClick = function() {
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
 
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
+  API.deleteOwner(idToDelete).then(function() {
+    refreshOwners();
   });
 };
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+$ownerList.on("click", ".delete", handleDeleteBtnClick);

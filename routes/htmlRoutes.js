@@ -3,41 +3,41 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+    db.Owner.findAll({}).then(function(dbOwners) {
       res.render("index", {
         msg: "Welcome!",
-        examples: dbExamples
+        owners: dbOwners
       });
     });
   });
 
   // owners page
   app.get("/owner", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+    db.Owner.findAll({}).then(function(dbOwners) {
       res.render("owner", {
         msg: "Welcome!",
-        examples: dbExamples
+        owners: dbOwners
       });
     });
   });
 
   // find page
   app.get("/find", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.render("owner", {
+    db.Owner.findAll({}).then(function(dbOwners) {
+      res.render("find", {
         msg: "Welcome!",
-        examples: dbExamples
+        owners: dbOwners
       });
     });
   });
 
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(
-      dbExample
+  // Load owner page and pass in an owner by id
+  app.get("/owner/:id", function(req, res) {
+    db.Owner.findOne({ where: { id: req.params.id } }).then(function(
+      dbOwner
     ) {
-      res.render("example", {
-        example: dbExample
+      res.render("owner", {
+        owner: dbOwner
       });
     });
   });
