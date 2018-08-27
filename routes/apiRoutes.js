@@ -1,9 +1,20 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all owners
-  app.get("/api/owners", function(req, res) {
-    db.Owner.findAll({}).then(function(dbOwners) {
+  // // Get all owners
+  // app.get("/api/owners/:City", function(req, res) {
+  //   db.Owner.findAll({}).then(function(dbOwners) {
+  //     res.json(dbOwners);
+  //   });
+  // });
+
+  // get route for cities
+  app.get("/api/owners/:City", function(req, res) {
+    db.Post.findAll({
+      where: {
+        City: req.params.City
+      }
+    }).then(function(dbOwners) {
       res.json(dbOwners);
     });
   });

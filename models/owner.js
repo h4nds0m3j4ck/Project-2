@@ -2,6 +2,7 @@ module.exports = function(sequelize, DataTypes) {
   var Owner = sequelize.define("Owner", {
     Name: DataTypes.TEXT,
     Address: DataTypes.TEXT,
+    City: DataTypes.TEXT,
     Description: DataTypes.TEXT,
     Price: DataTypes.INTEGER,
     Availability: DataTypes.TINYINT

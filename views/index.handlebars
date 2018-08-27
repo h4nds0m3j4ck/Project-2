@@ -45,7 +45,7 @@
               <br>
             <div class="form-row">
               <div class="col-12 col-md-9 mb-2 mb-md-0">
-                <input type="text" class="form-control form-control-lg" placeholder="Enter a city, address or Zip Code">
+                <input type="text" class="form-control form-control-lg" placeholder="Enter a city">
               </div>
               <div class="col-12 col-md-2">
                 <button type="submit" class="btn btn-block btn-lg btn-primary"><i class="fa fa-search" style="font-size:24px"></i></button>
@@ -54,6 +54,19 @@
               </div>
             </div>
           </form>
+     </div>
+   </div>
+   <h3>Examples:</h3>
+<ul id="example-list" class="list-group">
+  {{#each owners}}
+  <li data-id="{{this.id}}" class="list-group-item">
+    <a href="example/{{this.id}}">{{this.Address}}</a>
+    <button class="btn btn-danger float-right delete">ｘ</button>
+  </li>
+  {{/each}}
+</ul>
+ </div>
+</div>
         </div>
       </div>
     </div>
