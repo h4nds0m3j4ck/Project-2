@@ -1,8 +1,8 @@
 // Get references to page elements
 var $ownerAddress = $("#owner-Address");
 var $ownerName = $("#owner-Name");
-var $ownerPrice = $('#owner-Price');
-var $ownerAvailability = $('#owner-Availability');
+var $ownerDescription = $("#owner-Description");
+var $ownerPrice = $("#owner-Price");
 var $submitBtn = $("#submit");
 var $ownerList = $("#owner-list");
 
@@ -69,7 +69,8 @@ var handleFormSubmit = function(event) {
   var owner = {
     Address: $ownerAddress.val().trim(),
     Name: $ownerName.val().trim(),
-    Price: $ownerPrice.val().trim()
+    Price: $ownerPrice.val().trim(),
+    Description: $ownerDescription.val().trim()
   };
 
   if (!(owner.Address && owner.Name && owner.Price)) {
@@ -84,6 +85,7 @@ var handleFormSubmit = function(event) {
   $ownerAddress.val("");
   $ownerName.val("");
   $ownerPrice.val("");
+  $ownerDescription.val("");
 };
 
 // handleDeleteBtnClick is called when an owner's delete button is clicked
