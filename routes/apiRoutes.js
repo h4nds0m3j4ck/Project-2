@@ -11,7 +11,7 @@ module.exports = function(app) {
   // Create a new owner
   app.post("/api/owners", function(req, res) {
     db.Owner.create(req.body).then(function(dbOwner) {
-      res.json(dbOwner);
+      res.json(dbOwners);
     });
   });
 
@@ -20,7 +20,7 @@ module.exports = function(app) {
     db.Owner.destroy({ where: { id: req.params.id } }).then(function(
       dbOwner
     ) {
-      res.json(dbOwner);
+      res.json(dbOwners);
     });
   });
 };
