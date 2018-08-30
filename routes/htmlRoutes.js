@@ -22,9 +22,9 @@ module.exports = function(app) {
   });
 
   // find page
-  app.get("/find", function(req, res) {
+  app.get("/confirm", function(req, res) {
     db.Owner.findAll({}).then(function(dbOwners) {
-      res.render("find", {
+      res.render("confirm", {
         msg: "Welcome!",
         owners: dbOwners
       });

@@ -67,11 +67,13 @@ var handleFormSubmit = function(event) {
     Address: $ownerAddress.val().trim(),
     Name: $ownerName.val().trim(),
     Price: $ownerPrice.val().trim(),
-    Description: $ownerDescription.val().trim()
+    Description: $ownerDescription.val().trim(),
+    City: $ownerCity.val().trim(),
+    Telephone: $ownerTelephone.val().trim()
   };
 
   if (!(owner.Address && owner.Name && owner.Price)) {
-    alert("You must enter an owner Address and Name!");
+    alert("You must enter all the fields!");
     return;
   }
 
@@ -83,6 +85,9 @@ var handleFormSubmit = function(event) {
   $ownerName.val("");
   $ownerPrice.val("");
   $ownerDescription.val("");
+  $ownerTelephone.val("");
+  $ownerCity.val("");
+  location.href = "/confirm";
 };
 
 // handleDeleteBtnClick is called when an owner's delete button is clicked
