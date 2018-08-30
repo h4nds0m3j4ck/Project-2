@@ -5,7 +5,7 @@
 #Row_1{
     margin-bottom: 300px;
   }
-  
+
 #navbar{
     background-color:blue;
 }
@@ -37,7 +37,7 @@ header.masthead .overlay{
     left:0;
     opacity:.3
 }
- 
+
 header.masthead h1{
     font-size:2rem
 
@@ -108,7 +108,7 @@ header.masthead h1{
     padding-top:7rem;
     padding-bottom:7rem
 }
-    
+
 .call-to-action .overlay{
     position:absolute;
     background-color:#212529;
@@ -122,4 +122,8 @@ header.masthead h1{
 footer.footer{
     padding-top:4rem;
     padding-bottom:4rem
+}
+.resultslist {
+  width: 100%;
+
 }
