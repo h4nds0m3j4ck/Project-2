@@ -23,11 +23,11 @@
   <!-- Navigation -->
   <nav class="navbar navbar-light bg-light static-top">
       <ul class="navbar-left">
-      <a class="navbar-brand" href="/">Start Bootstrap</a>
+      <a class="navbar-brand" href="/">Super Parking</a>
       </ul>
       <ul class="navbar-right">
       <a class="navbar-brand" href="/find"></span>Find Parking</a>
-      <a class="navbar-brand" href="/owner"></span>Post Parking</a>
+      <a class="navbar-brand" href="/post"></span>Post Parking</a>
       <a class="btn btn-primary" href="#"></span>Sign In</a>
       </ul>
   </nav>
@@ -40,12 +40,12 @@
             <h1 id="find" class="mb-3">Find your perfect parking space</h1>
         </div>
         <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-          <form>
+          <form action="/owner/" method="GET">
               <br>
               <br>
             <div class="form-row">
               <div class="col-12 col-md-9 mb-2 mb-md-0">
-                <input type="text" class="form-control form-control-lg" placeholder="Enter a city">
+                <input name="City" type="text" id="searchinput" class="form-control form-control-lg" placeholder="Enter a city">
               </div>
               <div class="col-12 col-md-2">
                 <button type="submit" class="btn btn-block btn-lg btn-primary"><i class="fa fa-search" style="font-size:24px"></i></button>
@@ -56,7 +56,7 @@
           </form>
      </div>
    </div>
-   <h3>Examples:</h3>
+   <!-- <h3>Examples:</h3>
 <ul id="example-list" class="list-group">
   {{#each owners}}
   <li data-id="{{this.id}}" class="list-group-item">
@@ -64,7 +64,7 @@
     <button class="btn btn-danger float-right delete">ｘ</button>
   </li>
   {{/each}}
-</ul>
+</ul> -->
  </div>
 </div>
         </div>

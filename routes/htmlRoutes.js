@@ -13,10 +13,10 @@ module.exports = function(app) {
 
   // owners page
   app.get("/owner", function(req, res) {
-    db.Owner.findAll({}).then(function(dbOwners) {
-      res.render("owner", {
-        msg: "Welcome!",
-        owners: dbOwners
+    console.log(req.query.City);
+    db.Owner.findAll({ where: { City: req.query.City } }).then(function(dbOwners) {
+      res.render("example", {
+        owner: dbOwners
       });
     });
   });
@@ -32,12 +32,12 @@ module.exports = function(app) {
   });
 
   // Load owner page and pass in an owner by id
-  app.get("/owner/:id", function(req, res) {
-    db.Owner.findOne({ where: { id: req.params.id } }).then(function(
-      dbOwner
+  app.get("/post", function(req, res) {
+    db.Owner.findAll({ where: { City: req.params.City } }).then(function(
+      dbOwners
     ) {
       res.render("owner", {
-        owner: dbOwner
+        owner: dbOwners
       });
     });
   });

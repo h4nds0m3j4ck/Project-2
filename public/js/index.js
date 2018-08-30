@@ -5,7 +5,6 @@ var $ownerDescription = $("#owner-Description");
 var $ownerPrice = $("#owner-Price");
 var $submitBtn = $("#submit");
 var $ownerList = $("#owner-list");
-
 // The API object contains methods for each kind of request we'll make
 var API = {
   saveOwner: function(owner) {
@@ -31,7 +30,6 @@ var API = {
     });
   }
 };
-
 // refreshOwners gets new owners from the db and repopulates the list
 var refreshOwners = function() {
   API.getOwners().then(function(data) {
@@ -60,7 +58,6 @@ var refreshOwners = function() {
     $ownerList.append($owners);
   });
 };
-
 // handleFormSubmit is called whenever we submit a new owner
 // Save the new owner to the db and refresh the list
 var handleFormSubmit = function(event) {
